@@ -1,0 +1,13 @@
+Spring 설치
+1. Help => Eclipse MarketPlace => STS(Spring Tools Suite)검색 => 3.9 버전 설치
+2. window => perspective => Spring 선택
+3. help => Install new software => Add URL:https://download.eclipse.org/tm4e/snapshots 모두설치
+4. JDK(11버전 설치)
+5. c드라이브 eclipse.ini 검색 후 메모장에서 open 후 편집
+=============이전세팅=====================================
+-vm
+;C:/Users/kosmo/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208/jre/bin
+==============수정세팅==============
+-vm
+C:\jdk-11.0.13.8-hotspot\bin\javaw.exe
+6. Spring 프로젝트 생성 후 기본세팅설정
