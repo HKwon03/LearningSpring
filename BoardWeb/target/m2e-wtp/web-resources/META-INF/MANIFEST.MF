@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< .merge_file_a11192
 Built-By: kosmo
-=======
-Built-By: tbe2b
->>>>>>> .merge_file_a05936
 Build-Jdk: 11.0.13
 Created-By: Maven Integration for Eclipse
 

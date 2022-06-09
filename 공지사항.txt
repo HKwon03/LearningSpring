@@ -129,4 +129,18 @@ pom.xml 설정 사이트 : https://velog.io/@yseonjin/SPRING-SpringFramework-%ED
 spring 어노테이션
 
 6월8일
-spring
+spring AOP
+
+6월9일
+spring AOP 어노테이션
+
+게시판 참고
+메인
+https://s205203.tistory.com/4?category=814399
+
+참고
+https://ee2ee2.tistory.com/20
+https://ee2ee2.tistory.com/entry/JSP-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0-2%EA%B0%95-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%94%94%EC%9E%90%EC%9D%B8-Bootstrap-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+https://group11.tistory.com/9
+https://happy-inside.tistory.com/entry/JSP-JSP-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0-2%EA%B0%95-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%99%94%EB%A9%B4?category=878524
+https://foxvox.tistory.com/31
