@@ -37,10 +37,10 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getRegdate() {
+	public Date getRegDate() {
 		return regdate;
 	}
-	public void setRegdate(Date regdate) {
+	public void setRegDate(Date regdate) {
 		this.regdate = regdate;
 	}
 	public int getCnt() {

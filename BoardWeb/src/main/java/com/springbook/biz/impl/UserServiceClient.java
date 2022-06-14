@@ -36,9 +36,9 @@ public class UserServiceClient {
 		}
 		
 		//3-2 insert 메소드 호출(수정 사항)
-		vo.setId("bts3");
+		vo.setId("bts200");
 		vo.setPassword("1234");
-		vo.setName("뷔");
+		vo.setName("뷔200");
 		vo.setRole("BTS");
 	
 		userService.insertUser(vo);
