@@ -1,3 +1,14 @@
+1. web.xml : Spring의 org.springframework.web.servlet.DispatcherServlet 을 
+		Controller로 작동
+2. Webapp\WEB-INF 에 action-servlet.xml 의 빈설정 xml 파일이 존재해야함
+
+3. web.xml 설정에서 action-servlet.xml 의 이름이나 위치를 변경할 수 있다.
+	WEB-INF\config\presentation-layer.xml
+
+
+
+
+
 
 1. DispatcherServlet : 모든 클라이언트 요청을 제일 먼저 처리하는 Front End 의 Controller
 2. HandlerMapping 	 : 클라이언트 요청 정보를 처리할 Controller를 매핑(알려줌)
