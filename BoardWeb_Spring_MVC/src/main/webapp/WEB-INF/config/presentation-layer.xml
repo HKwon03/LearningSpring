@@ -27,7 +27,10 @@
 <bean id="updateBoard" class="com.springbook.biz.view.controller.UpdateBoardController"> </bean>
 <bean id="deleteBoard" class="com.springbook.biz.view.controller.DeleteBoardController"> </bean>
 
-<!-- ViewResolver 세팅 : View 페이지를 완성 prefix : ./, suffix : .jsp -->
+<!-- ViewResolver 세팅 : View 페이지를 완성 prefix : ./, suffix : .jsp 
+		Controller에서 Forward로 뷰페이지를 던질 때 적용
+		redirect로 뷰페이지로 던질 때는 적용이 안됨.
+-->
 <bean id = "viewResolver" class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix" value="/WEB-INF/board/"></property>
 	<property name="suffix" value=".jsp"></property>
