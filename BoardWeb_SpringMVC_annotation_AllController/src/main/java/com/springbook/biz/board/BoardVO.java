@@ -12,9 +12,9 @@ public class BoardVO {
 	private String content;
 	private Date regdate;
 	private int cnt;
-	//private String searchCondition;
-	//private String searchKeyword;
-	//private MultipartFile uploadFile;
+	private String searchCondition;
+	private String searchKeyword;
+	private MultipartFile uploadFile;
 	
 	//getter, setter
 	
@@ -54,7 +54,7 @@ public class BoardVO {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	/*
+	
 	public String getSearchCondition() {
 		return searchCondition;
 	}
@@ -73,7 +73,7 @@ public class BoardVO {
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
 	}
-	*/
+	
 	@Override
 	public String toString() {	//객체 자체를 출력시 객체의 주소를 출력하는 것이 아니라
 									//객체의 메모리의 값을 출력

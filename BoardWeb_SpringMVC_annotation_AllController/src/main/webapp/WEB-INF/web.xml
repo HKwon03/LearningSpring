@@ -10,7 +10,6 @@
 		<param-name>contextConfigLocation</param-name>	
 		<param-value>/WEB-INF/config/presentation-layer.xml</param-value>
 	</init-param>
-	
 </servlet>
 <servlet-mapping>
 	<servlet-name>action</servlet-name>
@@ -27,19 +26,25 @@
 		<param-name>encoding</param-name>
 		<param-value>EUC-KR</param-value>
 	</init-param>
-
 </filter>
+<filter-mapping>
+	<filter-name>characterEncoding</filter-name>
+	<url-pattern>*.do</url-pattern>
+</filter-mapping>
+
+
 <!-- 인코딩 설정 : UTF-8	<<완료>> -->
 
+<listener>
+	<listener-class>
+		org.springframework.web.context.ContextLoaderListener
+	</listener-class>
+</listener>
 
-
-
-
-
-
-
-
-
+<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>classpath:applicationContext.xml</param-value>
+</context-param>
 
 
 </web-app>
