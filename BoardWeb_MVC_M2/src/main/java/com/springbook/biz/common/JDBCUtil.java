@@ -8,8 +8,16 @@ import java.sql.ResultSet;
 public class JDBCUtil {
 	public static Connection getConnection() {
 		try {
-			Class.forName("org.h2.Driver");
-			return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+			/* H2 데이터 베이스 접근(보통 개발시) */
+			//Class.forName("org.h2.Driver");
+			//return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+		
+			/* Oracle 데이터 베이스 접근 */
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "HR5", "1234");
+		
+			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
