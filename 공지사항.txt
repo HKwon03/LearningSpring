@@ -144,3 +144,43 @@ https://ee2ee2.tistory.com/entry/JSP-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93
 https://group11.tistory.com/9
 https://happy-inside.tistory.com/entry/JSP-JSP-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0-2%EA%B0%95-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%ED%99%94%EB%A9%B4?category=878524
 https://foxvox.tistory.com/31
+
+6월10일
+계정 만들어 놓을 것
+주말_Cloud 서비스(무료계정 1년) 실수하면 요금폭탄 조심할 것 
+ - 신용카드 번호가 등록됨
+
+ - Amazon - AWS EC2
+	https://aws.amazon.com/
+
+ - Microsoft - Azure
+	https://azure.microsoft.com/ko-kr/
+
+2차 포트 폴리오(다음주 월요일까지, 화요일)
+  1. 프로젝트 압축(zip)
+  2. PPT 제출
+  3. 발표 구현된 내용을 촬영 (youtube에 업로드)
+	(데모 발표할 때)
+  공유폴더 프로젝트발표자료 2차upload 에 내이름폴더를만들고 업로드
+
+
+6월13일
+BoardWeb MVC_M1
+
+6월14일
+MVC_Framework
+
+6월15일
+spring_MVC, springMVC_annotation
+
+6월16일
+SpringMVC_annotation_AllController
+
+6월17일 
+SpringMVC_annotation_AllController
+클라우드 서비스
+https://portal.azure.com/
+https://aws.amazon.com/
+
+6월20일
+azure 

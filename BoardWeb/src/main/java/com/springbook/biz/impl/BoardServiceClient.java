@@ -18,7 +18,6 @@ public class BoardServiceClient {
 		//2. Spring 컨테이너로부터 BoardServiceImpl 객체를 받아온다.(Lookup 한다)
 				//비지니스 로직을 처리하는 객체(BoardServiceImpl.java)
 		
-		
 		BoardService boardService = (BoardService)container.getBean("boardService");
 		
 		
@@ -26,10 +25,10 @@ public class BoardServiceClient {
 		BoardVO vo = new BoardVO();
 		
 		//vo.setSeq(0);		//강제 예외 발생 코드
-		
-		vo.setTilte("임시 테스트 제목10");
-		vo.setWriter("홍길동10");
-		vo.setContent("임시 글 내용10 ........");
+		vo.setSeq(300);
+		vo.setTilte("임시 테스트 제목300");
+		vo.setWriter("홍길동300");
+		vo.setContent("임시 글 내용300 ........");
 		
 		boardService.insertBoard(vo);
 		
