@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 <center>
-	<h1>°Ô½ÃÆÇ ÇÁ·Î±×·¥</h1>
+	<h1>ê²Œì‹œíŒ í”„ë¡œê·¸ëž¨</h1>
 	<hr>
 	
-		<!-- a ÅÂ±×¸¦ ÅëÇØ¼­ ¸µÅ©°É¸° Àü¼Û ¹æ½ÄÀº GET ¹æ½ÄÀ¸·Î Àü¼Û -->
-		<a href = "login.do"> ·Î±×ÀÎ </a> <p><p>
-		<a href = "getBoardList.do"> ±Û ¸ñ·Ï ¹Ù·Î°¡±â </a>
+		<!-- a íƒœê·¸ë¥¼ í†µí•´ì„œ ë§í¬ê±¸ë¦° ì „ì†¡ ë°©ì‹ì€ GET ë°©ì‹ìœ¼ë¡œ ì „ì†¡ -->
+		<a href = "login.do"> ë¡œê·¸ì¸ </a> <p><p>
+		<a href = "getBoardList.do"> ê¸€ ëª©ë¡ ë°”ë¡œê°€ê¸° </a>
 
 
 </center>
