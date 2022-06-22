@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+		
+		
+<!-- 어노테이션 기반 사용 설정 : com.springbook.biz 패키지 하위의 모든 클래스의 어노테이션을 
+	게더링 함 -->
+		
+<context:component-scan base-package = "com.springbook.biz"></context:component-scan>		
+<mvc:annotation-driven></mvc:annotation-driven>
+
+
+<!-- AOP 어노테이션을 검색할 수 있도록 설정
+<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+ -->
+<!-- DataSource 설정 2. (프로퍼티 파일을 사용한 설정) : 
+	DB 연동할 때 사용, JDBCTemplate, mybatis, JPA 연동시 사용 -->
+<context:property-placeholder location="classpath:config/oracle_db.properties"/>
+<bean id = "dataSource" class = "org.apache.commons.dbcp.BasicDataSource" destroy-method = "close">
+	<property name="driverClassName" value = "${jdbc.driver}" />
+	<property name="url" value = "${jdbc.url}" />
+	<property name="username" value = "${jdbc.username}" />
+	<property name="password" value = "${jdbc.password}" />
+</bean>
+
+<!-- Spring JDBC 설정 : JDBCTemplate 객체생성해서 DI -->
+<bean id = "jdbcTemplate" class = "org.springframework.jdbc.core.JdbcTemplate">
+	<property name="dataSource" ref = "dataSource" />
+
+</bean>
+
+
+
+</beans>
