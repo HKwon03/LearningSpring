@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class BoardVO {
 	
 	private int seq;
@@ -18,12 +20,16 @@ public class BoardVO {
 	
 	//getter, setter
 	
+	//@JsonIgnore : getter 위에 설정, 특정 변수는 JSON 포멧으로 변환하지 않도록 설정할 때 사용.
+	
 	public int getSeq() {
 		return seq;
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
+	
+	@JsonIgnore
 	public String getTitle() {
 		return title;
 	}
@@ -54,19 +60,23 @@ public class BoardVO {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	
+	@JsonIgnore
 	public String getSearchCondition() {
 		return searchCondition;
 	}
 	public void setSearchCondition(String searchCondition) {
 		this.searchCondition = searchCondition;
 	}
+	
+	@JsonIgnore
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
+	
+	@JsonIgnore
 	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}

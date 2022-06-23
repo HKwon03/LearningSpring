@@ -14,7 +14,8 @@
 	
 		<!-- a 태그를 통해서 링크걸린 전송 방식은 GET 방식으로 전송 -->
 		<a href = "login.do"> 로그인 </a> <p><p>
-		<a href = "getBoardList.do"> 글 목록 바로가기 </a>
+		<a href = "getBoardList.do"> 글 목록 바로가기 </a> <p><p>
+		<a href = "dataTransform.do"> 글 목록 변환처리</a>
 
 
 </center>
