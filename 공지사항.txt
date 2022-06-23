@@ -194,5 +194,3 @@ SpringMVC_FileUpload
 6월23일
 SpringMVC_Language
 Mybatis
-게시판 참고
-https://melonpeach.tistory.com/8?category=806570
