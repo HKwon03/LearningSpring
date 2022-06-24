@@ -8,9 +8,11 @@
 		<result property="title" column="TITLE" />
 		<result property="writer" column="WRITER" />
 		<result property="content" column="CONTENT" />
-		<result property="regDate" column="REGDATE" />
+		<result property="regdate" column="REGDATE" />
 		<result property="cnt" column="CNT" />
 	</resultMap>
+
+
 
 	<insert id="insertBoard" parameterType="board">
 		<![CDATA[
@@ -43,7 +45,16 @@
 		WHERE SEQ = #{seq}
 		]]>
 	</select>
-
+	
+	<select id="getBoardList" resultMap="boardResult">
+		<![CDATA[
+		SELECT *
+		FROM BOARD
+		ORDER BY SEQ DESC
+		]]>
+	</select>
+	
+	<!-- 
 	<select id="getBoardList" resultMap="boardResult">
 		SELECT *
 		FROM BOARD
@@ -56,5 +67,5 @@
 		</if>
 		ORDER BY SEQ DESC
 	</select>
-
+	 -->
 </mapper>

@@ -1,0 +1,11 @@
+
+
+	users 테이블 : 뷰페이지 생성
+	  - getUsersList.do
+	  - getUsers.do
+	  - insertUsers.do
+	  - updateUsers.do
+	  - deleteUsers.do
+	  
+	-- JDBCTemplate 을 사용해서 , insertUsers(), updateUsers(), deleteUsers(), getUsers(), getUsersList() 구현
+	-- MyBatis 을 사용해서 insertUsers(), updateUsers(), deleteUsers(), getUsers(), getUsersList() 구현

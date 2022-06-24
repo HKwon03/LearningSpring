@@ -5,19 +5,19 @@
 
 	<insert id="insertBoard">
 		INSERT INTO board(seq,title,writer,content) 
-		VALUES((select nvl (max(seq,0) +1 from board), #{title},#{writer},#{content})) 
+		VALUES ((select nvl (max(seq,0) +1 from board)), #{title},#{writer},#{content})
 	</insert>
 	
 	<update id="updateBoard">
-		UPDATE board SET title = #{title}, content = #{content} WHERE seq = #{seq}
+		UPDATE board SET title = #{title}, content = #{content} WHERE seq=#{seq}
 	</update>
-	
+
 	<delete id="deleteBoard">
 		DELETE board WHERE seq = #{seq}
 	</delete>
 	
 	<select id="getBoard" resultType="board">
-		SELECT * FROM board WHERE seq = #{seq}
+		SELECT * FROM board WHERE seq=#{seq}
 	</select>
 	
 	<select id="getBoardList" resultType="board">
@@ -25,7 +25,4 @@
 		WHERE title LIKE '%' || #{searchKeyword} || '%'
 		ORDER BY seq DESC
 	</select>
-	
-	
-
 </mapper>
