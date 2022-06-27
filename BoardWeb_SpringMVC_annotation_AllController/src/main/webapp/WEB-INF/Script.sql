@@ -25,4 +25,4 @@ INSERT INTO BOARD ( SEQ, TITLE, WRITER, CONTENT, REGDATE, CNT)
 VALUES (1, '가입인사' , '관리자', '안녕하세요. 반갑습니다. .... ', sysdate, default ); 
 commit;
 
-SELECT * FROM BOARD;
+SELECT * FROM BOARD order by seq desc;

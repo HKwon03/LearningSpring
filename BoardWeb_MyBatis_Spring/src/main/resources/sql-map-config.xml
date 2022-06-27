@@ -8,6 +8,8 @@
 	 -->
 	<typeAliases>
 		<typeAlias type="com.springbook.biz.board.BoardVO" alias="board"></typeAlias>
+		<typeAlias type="com.springbook.biz.user.UserVO" alias="user"/>
+		
 	</typeAliases>
 	
 	<!-- DB연결 설정은 MyBatis Spring과 연동할 때 다른곳에서 설정 함. <<여기서는 사용안함>>
@@ -26,5 +28,7 @@
 	 
 	<mappers>
 		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/user-mapping.xml" />
+		
 	</mappers>
 </configuration>

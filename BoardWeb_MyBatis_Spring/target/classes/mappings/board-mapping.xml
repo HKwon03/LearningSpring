@@ -46,7 +46,7 @@
 		]]>
 	</select>
 	
-	<select id="getBoardList" resultMap="boardResult">
+	<select id="getBoardList" resultType="board">
 		<![CDATA[
 		SELECT *
 		FROM BOARD

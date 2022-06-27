@@ -52,7 +52,7 @@
 	<bean id = "localeResolver" class = "org.springframework.web.servlet.i18n.SessionLocaleResolver">
 	</bean>
 	
-	<!-- 3. LocalchangeInterceptor 등록  -->
+	<!-- 3. LocalechangeInterceptor 등록  -->
 	<mvc:interceptors>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<property name="paramName" value="lang"></property>

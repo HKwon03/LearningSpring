@@ -16,6 +16,10 @@ INCREMENT BY 1;
 --게시판 더미 데이터 생성
 INSERT INTO MP_BOARD(BNO, TITLE, CONTENT, WRITER)
      VALUES (MP_BOARD_SEQ.NEXTVAL, '제목입니다', '내용입니다', 'BTS');
+INSERT INTO MP_BOARD(BNO, TITLE, CONTENT, WRITER)
+     VALUES (MP_BOARD_SEQ.NEXTVAL, '안녕하세요', '호이', '뷔');
+INSERT INTO MP_BOARD(BNO, TITLE, CONTENT, WRITER)
+     VALUES (MP_BOARD_SEQ.NEXTVAL, '고기줘', '배고파', '정국');
 
 --2배수 게시물 증가 쿼리
 insert into mp_board(bno, title, content, writer)

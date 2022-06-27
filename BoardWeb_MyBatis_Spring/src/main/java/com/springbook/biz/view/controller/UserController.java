@@ -2,17 +2,25 @@ package com.springbook.biz.view.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.impl.UserDAO;
+import com.springbook.biz.user.impl.UserService1;
 
 @Controller
 public class UserController {
-
+	
+	@Autowired
+	private UserService1 userService1;
+			//userService1은 인터페이스이므로 이를 구현한 객체가 주입됨.
+	
+	
 	//1. 로그인 (GET 방식 처리 메소드)
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	//public String loginView(UserVO vo) {
@@ -61,6 +69,64 @@ public class UserController {
 		session.invalidate();
 		return "redirect:login.jsp";
 	}
-
+	
+	//3. 회원 등록(insert)
+		//회원 등록 링크를 클릭 했을때 : GET, insertUser.jsp 뷰페이지로 전송
+	@RequestMapping(value="/insertUser.do", method=RequestMethod.GET)
+	public String insertView(UserVO vo) {
+		return "insertUser.jsp";
+	}
+	
+	
+		//회원등록 폼에서 값을 넣고 전송 : DB에 저장 <== POST
+	@RequestMapping(value="/insertUser.do", method=RequestMethod.POST)
+	public String insertUser(UserVO vo) {
+		
+		System.out.println("회원 가입 성공 : - insertUser() 메소드 호출 - Mybatis");
+		
+		userService1.insertUser(vo);
+		return "redirect:getUserList.do";
+	}
+	
+	//4. 회원 수정(update)
+		//회원 수정 링크를 클릭 했을때
+	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
+	public String updateView(UserVO vo, Model model) {
+		
+		model.addAttribute("user", userService1.getUser(vo));
+		return "updateUser.jsp";
+	}
+		//회원 수정 페이지에서 값을 넣고 전송 버튼을 눌렀을 때 : POST
+	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
+	public String updateUser(UserVO vo) {
+		userService1.updateUser(vo);
+		return "index.jsp";		//회원 수정후 리스트 페이지로 전송
+	}
+	
+	//5. 회원 탈퇴
+	
+		// 회원 탈퇴링크를 클릭했을때 : GET 방식
+	@RequestMapping(value="/deleteUser.do", method=RequestMethod.GET)
+	public String deleteView(UserVO vo) {
+		userService1.deleteUser(vo);
+		
+		return "getUserList.do";
+	}
+		// 회원 탈퇴를 폼에서 POST 방식으로 전송했을때
+	@RequestMapping(value="/deleteUser.do", method=RequestMethod.POST)
+	public String deleteUser(UserVO vo) {
+		userService1.deleteUser(vo);
+		return "getUserList.do";
+	}
+	
+	//6. 회원 목록 출력
+	@RequestMapping("/getUserList.do")
+	public String getUserList(UserVO vo, Model model) {
+		
+		model.addAttribute("userList", userService1.getUserList(vo));
+		return "getUserList.jsp";
+	}
+	
+	
 	
 }
