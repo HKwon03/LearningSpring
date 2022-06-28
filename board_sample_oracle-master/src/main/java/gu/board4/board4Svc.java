@@ -43,7 +43,7 @@ public class board4Svc {
 	    	if (fileno != null) {
 	    	    HashMap p = new HashMap();
 	    	    p.put("fileno", fileno) ;
-	    	    sqlSession.insert("deleteBoard4File", p);
+	    	    sqlSession.delete("deleteBoard4File", p);
 	    	}
 	    	
 	    	for (FileVO f : filelist) {

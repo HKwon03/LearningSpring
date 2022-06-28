@@ -53,13 +53,17 @@
 		        TITLE, 
 		        CONTENT,
 		        WRITER, 
-		        REGDATE
+		        REGDATE,
+		        HIT,
+		        REPLYCOM
 		 FROM ( 
 		        SELECT BNO, 
 		               TITLE, 
 		               CONTENT, 
 		               WRITER, 
-		               REGDATE, 
+		               REGDATE,
+		               HIT,
+		               REPLYCOM,
 		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
 		         FROM MP_BOARD
 		         WHERE 1=1 
@@ -85,5 +89,19 @@
 			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
+	
+	<!-- 게시판 조회수 -->
+	<update id="boardHit" parameterType="int">
+		UPDATE MP_BOARD SET
+		HIT = HIT+1
+		WHERE BNO = #{bno}
+	</update>
+	
+	<!-- 게시판 답변완료 -->
+	<update id="boardReplyCom" parameterType="int">
+		UPDATE MP_BOARD SET
+		REPLYCOM = REPLYCOM+1
+		WHERE BNO = #{bno}
+	</update>
    
 </mapper>
