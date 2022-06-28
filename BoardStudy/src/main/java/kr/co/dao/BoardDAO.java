@@ -27,8 +27,5 @@ public interface BoardDAO {
 	
 	// 게시판 조회수
 	public void boardHit(int bno) throws Exception;
-	
-	// 게시판 답변완료
-	public void boardReplyCom(int bno) throws Exception;
 
 }

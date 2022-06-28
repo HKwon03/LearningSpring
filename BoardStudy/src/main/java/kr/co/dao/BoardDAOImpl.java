@@ -63,11 +63,5 @@ public class BoardDAOImpl implements BoardDAO {
 	public void boardHit(int bno) throws Exception {
 		sqlSession.update("boardMapper.boardHit", bno);
 	}
-	
-	// 게시판 답변완료
-	@Override
-	public void boardReplyCom(int bno) throws Exception {
-		sqlSession.update("boardMapper.boardReplyCom", bno);
-	}
 
 }

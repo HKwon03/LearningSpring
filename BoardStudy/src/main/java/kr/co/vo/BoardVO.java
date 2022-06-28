@@ -10,7 +10,6 @@ public class BoardVO {
 	private String writer;
 	private Date regdate;
 	private int hit;
-	private int replyCom;
 	
 
 	public int getBno() {
@@ -48,12 +47,6 @@ public class BoardVO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
-	}
-	public int getReplyCom() {
-		return replyCom;
-	}
-	public void setReplyCom(int replyCom) {
-		this.replyCom = replyCom;
 	}
 	
 }

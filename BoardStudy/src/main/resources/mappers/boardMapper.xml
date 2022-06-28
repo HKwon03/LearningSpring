@@ -54,8 +54,7 @@
 		        CONTENT,
 		        WRITER, 
 		        REGDATE,
-		        HIT,
-		        REPLYCOM
+		        HIT
 		 FROM ( 
 		        SELECT BNO, 
 		               TITLE, 
@@ -63,7 +62,6 @@
 		               WRITER, 
 		               REGDATE,
 		               HIT,
-		               REPLYCOM,
 		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
 		         FROM MP_BOARD
 		         WHERE 1=1 
@@ -94,13 +92,6 @@
 	<update id="boardHit" parameterType="int">
 		UPDATE MP_BOARD SET
 		HIT = HIT+1
-		WHERE BNO = #{bno}
-	</update>
-	
-	<!-- 게시판 답변완료 -->
-	<update id="boardReplyCom" parameterType="int">
-		UPDATE MP_BOARD SET
-		REPLYCOM = REPLYCOM+1
 		WHERE BNO = #{bno}
 	</update>
    
