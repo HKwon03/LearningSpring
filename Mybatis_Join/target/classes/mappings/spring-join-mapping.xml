@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="joins">
+
+<resultMap type="depts" id="deptMaps">
+	<id property="deptno" column="DEPTNO"/>
+	<result property="dname" column="DNAME"/>
+	<result property="loc" column="LOC"/>
+</resultMap>
+<resultMap type="emps" id="empMaps">
+	<id property="empno" column="EMPNO"/>
+	<result property="ename" column="ENAME"/>
+	<result property="sal" column="SAL"/>
+	<result property="deptno" column="DEPTNO"/>
+</resultMap>
+
+<!-- 두 ResultMap을 처리하는 ResultMap -->
+<resultMap type="joinvos" id="joinMaps">
+	<collection property="empJs" resultMap="empMaps" />
+	<collection property="deptJs" resultMap="deptMaps" />
+</resultMap>
+
+
+
+<select id="selectListJoins" resultMap="joinMaps">
+	<![CDATA[
+		SELECT A.DEPTNO, A.DNAME, A.LOC, B.EMPNO, B.ENAME, B.SAL
+		FROM SPRING_DEPARTMENT A, SPRING_EMPLOYMENT B
+		WHERE A.DEPTNO = B.DEPTNO
+	]]>
+</select>
+
+</mapper>

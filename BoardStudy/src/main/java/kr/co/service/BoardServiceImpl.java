@@ -44,6 +44,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO read(int bno) throws Exception {
 			dao.boardHit(bno);
+			dao.boardAnswer(bno);
 		return dao.read(bno);
 	}
 	

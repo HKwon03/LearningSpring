@@ -10,6 +10,7 @@ public class BoardVO {
 	private String writer;
 	private Date regdate;
 	private int hit;
+	private String answer;
 	
 
 	public int getBno() {
@@ -48,5 +49,12 @@ public class BoardVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
 	
 }

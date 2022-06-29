@@ -54,7 +54,8 @@
 		        CONTENT,
 		        WRITER, 
 		        REGDATE,
-		        HIT
+		        HIT,
+		        ANSWER
 		 FROM ( 
 		        SELECT BNO, 
 		               TITLE, 
@@ -62,6 +63,7 @@
 		               WRITER, 
 		               REGDATE,
 		               HIT,
+		               ANSWER,
 		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
 		         FROM MP_BOARD
 		         WHERE 1=1 
@@ -94,5 +96,20 @@
 		HIT = HIT+1
 		WHERE BNO = #{bno}
 	</update>
-   
+	
+	<!-- 게시판 답변완료 -->
+	<update id="boardAnswer" parameterType="kr.co.vo.BoardVO">
+	UPDATE
+    MP_BOARD A
+	SET
+	ANSWER = '답변완료'
+	WHERE EXISTS (
+    SELECT
+    RNO
+    FROM
+    MP_REPLY B
+    WHERE
+        A.BNO = B.BNO
+    )
+   </update>
 </mapper>
