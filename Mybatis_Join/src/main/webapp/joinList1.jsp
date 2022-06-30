@@ -30,16 +30,16 @@
 		<!-- Loop ½ÃÀÛ  -->
 		<c:forEach items ="${joinList}" var="join">
 		<tr> 
-			<td> ${join.eno }</td>
-			<td>${join.ename } </td>
-			<td> ${join.job }</td>
-			<td>${join.manager } </td>
-			<td> ${join.hiredate }</td>
-			<td>${join.salary } </td>
-			<td>${join.commission } </td>
-			<td>${join.dno } </td>
-			<td>${join.dname } </td>		
-			<td>${join.loc} </td>		
+			<td> ${join.empJ.eno }</td>
+			<td>${join.empJ.ename } </td>
+			<td> ${join.empJ.job }</td>
+			<td>${join.empJ.manager } </td>
+			<td> ${join.empJ.hiredate }</td>
+			<td>${join.empJ.salary } </td>
+			<td>${join.empJ.commission } </td>
+			<td>${join.deptJ.dno } </td>
+			<td>${join.deptJ.dname } </td>		
+			<td>${join.deptJ.loc} </td>		
 		</tr>
 		</c:forEach>
 	

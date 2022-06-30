@@ -1,20 +1,18 @@
 package com.mybatis.join.vo;
 
-import org.springframework.stereotype.Component;
-
-@Component
-public class EmployeeVO {
-	
-	private int eno          ;
-	private String ename        ;
-	private String job          ;
-	private int manager      ;
-	private String hiredate     ;
-	private int salary       ;
-	private int commission   ;
-    private int dno          ;
+public class EnD_VO {
+	private int eno  ;
+	private String ename      ;
+	private String job        ;
+	private int manager    ;
+	private String hiredate   ;
+	private int salary     ;
+	private int commission ;
+    private int dno        ;
+    private String dname      ;
+    private String loc        ;
     
-    public EmployeeVO() {}
+    private EnD_VO() {}
 
 	public int getEno() {
 		return eno;
@@ -80,13 +78,29 @@ public class EmployeeVO {
 		this.dno = dno;
 	}
 
+	public String getDname() {
+		return dname;
+	}
+
+	public void setDname(String dname) {
+		this.dname = dname;
+	}
+
+	public String getLoc() {
+		return loc;
+	}
+
+	public void setLoc(String loc) {
+		this.loc = loc;
+	}
+
 	@Override
 	public String toString() {
-		return "EmployeeVO [eno=" + eno + ", ename=" + ename + ", job=" + job + ", manager=" + manager + ", hiredate="
-				+ hiredate + ", salary=" + salary + ", commission=" + commission + ", dno=" + dno + "]";
-	}
+		return "EnD_VO [eno=" + eno + ", ename=" + ename + ", job=" + job + ", manager=" + manager + ", hiredate="
+				+ hiredate + ", salary=" + salary + ", commission=" + commission + ", dno=" + dno + ", dname=" + dname
+				+ ", loc=" + loc + "]";
+	} 
     
     
     
-
 }

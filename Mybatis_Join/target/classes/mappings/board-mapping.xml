@@ -12,8 +12,6 @@
 		<result property="cnt" column="CNT" />
 	</resultMap>
 
-
-
 	<insert id="insertBoard" parameterType="board">
 		<![CDATA[
 		INSERT INTO BOARD(SEQ, TITLE, WRITER, CONTENT)
@@ -45,7 +43,7 @@
 		WHERE SEQ = #{seq}
 		]]>
 	</select>
-	
+
 	<select id="getBoardList" resultType="board">
 		<![CDATA[
 		SELECT *
@@ -53,19 +51,5 @@
 		ORDER BY SEQ DESC
 		]]>
 	</select>
-	
-	<!-- 
-	<select id="getBoardList" resultMap="boardResult">
-		SELECT *
-		FROM BOARD
-		WHERE 1 = 1
-		<if test="searchCondition == 'TITLE'">
-			AND TITLE LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		<if test="searchCondition == 'CONTENT'">
-			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		ORDER BY SEQ DESC
-	</select>
-	 -->
+
 </mapper>

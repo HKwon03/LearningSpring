@@ -8,19 +8,48 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
 	
-	private int seq;
-	private String title;
-	private String writer;
-	private String content;
-	private Date regdate;
+	private int seq; 
+	private String title; 
+	private String writer; 
+	private String content; 
+	private Date regdate; 
 	private int cnt;
 	private String searchCondition;
 	private String searchKeyword;
 	private MultipartFile uploadFile;
 	
-	//getter, setter
+	//getter , setter
 	
-	//@JsonIgnore : getter 위에 설정, 특정 변수는 JSON 포멧으로 변환하지 않도록 설정할 때 사용.
+	//@JsonIgnore   : getter 위에 설정 , 특정 변수는 JSON 포멧으로 변환하지 않도록 설정할때 사용. 
+	
+	//@JsonIgnore
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	
+	//@JsonIgnore
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	
+	//@JsonIgnore
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	
+	
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	
+	
+	
 	
 	public int getSeq() {
 		return seq;
@@ -59,40 +88,16 @@ public class BoardVO {
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
-	}
-	//@JsonIgnore
-	public String getSearchCondition() {
-		return searchCondition;
-	}
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
-	}
-	
-	//@JsonIgnore
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
-	
-	//@JsonIgnore
-	public MultipartFile getUploadFile() {
-		return uploadFile;
-	}
-	public void setUploadFile(MultipartFile uploadFile) {
-		this.uploadFile = uploadFile;
-	}
+	} 
 	
 	@Override
-	public String toString() {	//객체 자체를 출력시 객체의 주소를 출력하는 것이 아니라
-									//객체의 메모리의 값을 출력
+	public String toString () {	//객체 자체를 출력시 객체의 주소를 출력 하는 것이 아니라 
+								  // 객체의 메모리의 값을 출력 
 		
-		return "BoardVO [seq = " + seq + ", title = " + title + ", writer = " + writer + 
+		return "BoardVO [seq = " + seq + ", title = " + title + ", writer = " + writer +
 				" , content = " + content + " , regdate = " + regdate + " , cnt = " + 
-				cnt + "]" ;
-				
+				cnt + "]" ; 
 	}
 	
-
+	
 }

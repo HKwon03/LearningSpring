@@ -14,7 +14,7 @@
 	<delete id="deleteBoard">
 	
 	</delete>
-	
+
 	<select id="getBoard" resultType="board">
 	
 	</select>
@@ -22,7 +22,6 @@
 	<select id="getBoardList" resultType="board">
 	
 	</select>
-	
-	
+
 
 </mapper>
