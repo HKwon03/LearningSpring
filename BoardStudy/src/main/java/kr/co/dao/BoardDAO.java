@@ -7,28 +7,28 @@ import kr.co.vo.SearchCriteria;
 
 public interface BoardDAO {
 
-	// °Ô½Ã±Û ÀÛ¼º
+	// ê²Œì‹œê¸€ ì‘ì„±
 	public void write(BoardVO boardVO) throws Exception;
 	
-	// °Ô½Ã¹° ¸ñ·Ï Á¶È¸
+	// ê²Œì‹œë¬¼ ëª©ë¡ ì¡°íšŒ
 	public List<BoardVO> list(SearchCriteria scri) throws Exception;
 	
-	// °Ô½Ã¹° ÃÑ °¹¼ö
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 	public int listCount(SearchCriteria scri) throws Exception;
 	
-	// °Ô½Ã¹° Á¶È¸
+	// ê²Œì‹œë¬¼ ì¡°íšŒ
 	public BoardVO read(int bno) throws Exception;
 	
-	// °Ô½Ã¹° ¼öÁ¤
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
 	public void update(BoardVO boardVO) throws Exception;
 	
-	// °Ô½Ã¹° »èÁ¦
+	// ê²Œì‹œë¬¼ ì‚­ì œ
 	public void delete(int bno) throws Exception;
 	
-	// °Ô½ÃÆÇ Á¶È¸¼ö
+	// ê²Œì‹œë¬¼ ì¡°íšŒìˆ˜
 	public void boardHit(int bno) throws Exception;
 	
-	//°Ô½ÃÆÇ ´äº¯¿Ï·á
+	// ê²Œì‹œíŒ ë‹µë³€ì™„ë£Œ
 	public void boardAnswer(int bno) throws Exception;
 
 }

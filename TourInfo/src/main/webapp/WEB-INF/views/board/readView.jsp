@@ -109,10 +109,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								<label for="regdate">작성날짜</label>
-								<fmt:formatDate value="${read.regdate}" pattern="yyyy-MM-dd" />					
-							</td>
+
 						</tr>		
 					</tbody>			
 				</table>
@@ -121,43 +118,6 @@
 					<button type="submit" class="delete_btn">삭제</button>
 					<button type="submit" class="list_btn">목록</button>	
 				</div>
-				
-				<!-- 댓글 -->
-				<div id="reply">
-					<ol class="replyList">
-					    <c:forEach items="${replyList}" var="replyList">
-					    	<li>
-						        <p>
-						        작성자 : ${replyList.writer}<br />
-						        작성 날짜 :  <fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" />
-						        </p>
-						
-						        <p>${replyList.content}</p>
-						        <div>
-									<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-									<button type="button" class="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button>
-								</div>
-					    	</li>
-					    </c:forEach>   
-					</ol>
-				</div>
-				
-				<form name="replyForm" method="post">
-					<input type="hidden" id="bno" name="bno" value="${read.bno}" />
-					<input type="hidden" id="page" name="page" value="${scri.page}"> 
-					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
-					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
-					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
-					
-					<div>
-					    <label for="writer">댓글 작성자</label><input type="text" id="writer" name="writer" />
-					    <br/>
-					    <label for="content">댓글 내용</label><input type="text" id="content" name="content" />
-					</div>
-					<div>
-					 	 <button type="button" class="replyWriteBtn">작성</button>
-					</div>
-				</form>
 				
 			</section>
 			<hr />

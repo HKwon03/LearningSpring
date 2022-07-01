@@ -6,19 +6,19 @@ import kr.co.vo.ReplyVO;
 
 public interface ReplyService {
 	
-	// ´ñ±Û Á¶È¸
+	// ëŒ“ê¸€ ì¡°íšŒ
 	public List<ReplyVO> readReply(int bno) throws Exception;
 	
-	// ´ñ±Û ÀÛ¼º
+	// ëŒ“ê¸€ ì‘ì„±
 	public void writeReply(ReplyVO vo) throws Exception;
 	
-	// ´ñ±Û ¼öÁ¤
+	// ëŒ“ê¸€ ìˆ˜ì •
 	public void updateReply(ReplyVO vo) throws Exception;
 	
-	// ´ñ±Û »èÁ¦
+	// ëŒ“ê¸€ ì‚­ì œ
 	public void deleteReply(ReplyVO vo) throws Exception;
 	
-	// ¼±ÅÃµÈ ´ñ±Û Á¶È¸
+	// ì„ íƒëœ ëŒ“ê¸€ ì¡°íšŒ
 	public ReplyVO selectReply(int rno) throws Exception;
 
 }
