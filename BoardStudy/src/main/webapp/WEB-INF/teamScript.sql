@@ -92,5 +92,20 @@ WHERE EXISTS (
     WHERE
         A.BNO = B.BNO
     );
+or SET
+    ANSWER = '답변대기'
+WHERE not EXISTS (
+    SELECT
+        RNO
+    FROM
+        MP_REPLY B
+    WHERE
+        A.BNO = B.BNO
+    );    
+    
+    
+    
+    
+rollback;
 SELECT * FROM MP_BOARD order by bno desc;
 commit;
