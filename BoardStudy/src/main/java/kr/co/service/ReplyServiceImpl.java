@@ -15,31 +15,31 @@ public class ReplyServiceImpl implements ReplyService {
 	@Inject
 	private ReplyDAO dao;
 	
-	// ëŒ“ê¸€ ì¡°íšŒ
+	// ´ñ±Û Á¶È¸
 	@Override
 	public List<ReplyVO> readReply(int bno) throws Exception {
 		return dao.readReply(bno);
 	}
 	
-	// ëŒ“ê¸€ ì‘ì„±
+	// ´ñ±Û ÀÛ¼º
 	@Override
 	public void writeReply(ReplyVO vo) throws Exception {
 		dao.writeReply(vo);
 	}
 	
-	// ëŒ“ê¸€ ìˆ˜ì •
+	// ´ñ±Û ¼öÁ¤
 	@Override
 	public void updateReply(ReplyVO vo) throws Exception {
 		dao.updateReply(vo);
 	}
 	
-	// ëŒ“ê¸€ ì‚­ì œ
+	// ´ñ±Û »èÁ¦
 	@Override
 	public void deleteReply(ReplyVO vo) throws Exception {
 		dao.deleteReply(vo);
 	}
 	
-	// ì„ íƒëœ ëŒ“ê¸€ ì¡°íšŒ
+	// ¼±ÅÃµÈ ´ñ±Û Á¶È¸
 	@Override
 	public ReplyVO selectReply(int rno) throws Exception {
 		return dao.selectReply(rno);

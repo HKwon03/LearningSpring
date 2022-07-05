@@ -148,6 +148,69 @@ merge : 커밋정보를 다른 브랜치의 커밋된 정보와 합칠 때 사�
    - Fast Forward Merge : 빠르게 머지할 수 있다.
 	master 브랜치에서 새로운 브랜치를 생성후 새로운 브랜치에서 기능을 작성후 master 브랜치로 merge
 	
+	git checkout master
+	git merge dev
+
+   - 3Way Merge : 두 브랜치 모두 수정사항이 발생 되었을 경우, VI 에디터로 들어감 (커밋 로그이름을 수정)
+
+	git checkout master
+	git merge dev		<== VI로 이동(로그이름을 수정, 저장후 종료)
+	git checkout dev
+	git merge master
+
+VI Editor
+  명령모드 : 키보드의 모든 키가 명령어로 작동되는 모드
+  입력모드 : 키보드의 키가 입력되는 모드
+  라인입력모드 : VI의 설정을 세팅하는 모드, 저장하고 VI 빠져 나오기
+
+	==> 명령모드에서 입력모드로 전환 : i
+	==> 입력모드에서 명령모드로 전환 : esc
+	==> 명령모드에서 라인입력모드로 전환 :   :wq    <== 저장하고 빠져나오기
+
+git log --all --oneline --graph
+
+==============================================================
+merge 충돌 해결 : - 하나의 파일을 여러명이 수정할 경우, merge할 때 충돌 발생이 될 수 있다.
+	          - 하나의 파일(기능)은 한명의 개발자가 관리하도록 정책이 필요하다.
+	-회원로그인 <- controller, dao, dto, view page
+
+==============================================================
+rebase : 커밋 로그를 깔금하게 정리함. 협업할 때 자신의 커밋 로그를 잘 정리해서 merge 함.
+	- 개발 당시에 생성한 불필요한 커밋 로그를 깔금하게 정리해서 dev 브랜치에 통합
+
+	개발당시에 커밋로그			원격의 GitHub 레파지토리에 올리기 위한 커밋로그
+	---------------------------------------------------------------------------
+	pick 1. 회원가입 DB 생성			1. 회원가입 완료
+	  s   2. 회원가입 Controller 생성
+	  s   3. 회원가입 DTO 생성
+	  s   4. 회원가입 DAO 생성
+	  s   5. 회원가입 View Page 생성
+	  s   6. 회원가입 완료
 
 
-   - 3Way Merge
+	squash : 찌그러뜨리다.
+
+    git rebase -i HEAD~6	
+
+    git push -f origin chb		<== 강제로 push 한다.
+    git push --delete origin chb		<== 원격 브랜치 삭제
+
+<<원격의 GitHub 레파지토리에 Push할 때 주의사항>>
+1. 반드시 별도의 브랜치를 생성후 (chb) push 해야한다. <주의 : master, dev에서 개발하면 안된다.>
+2. 개발된 브랜치를 GitHub로 Push 한다.	<== 주의 : 지저분한 Commit 로그를 rebase 후 깔끔하게 해서 push한다.
+3. PR(Pull Request) 요청을 한다.
+4. 승인이 완료되면 merge 한다.
+5. 해당 브랜치(chb)를 삭제한다.
+6. local dev 브랜치를 원격의 dev 브랜치와 동기화 시킨다. <master, dev를 원격의 GitHub의 레파지토리와 동기화한다.> git pull origin master
+
+============================================================
+reflog : 모든 커밋된 정보를 저장하고 있는 로그	<== <<굉장히 중요한 정보>>
+     <<특정 커밋된 곳으로 되돌릴때 사용>>
+   git reflog
+   git reset --hard <되돌릴 commit hashcode>
+
+
+
+
+
+

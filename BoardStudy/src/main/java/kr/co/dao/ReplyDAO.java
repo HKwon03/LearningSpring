@@ -6,19 +6,19 @@ import kr.co.vo.ReplyVO;
 
 public interface ReplyDAO {
 	
-	// ëŒ“ê¸€ ì¡°íšŒ
+	// ´ñ±Û Á¶È¸
 	public List<ReplyVO> readReply(int bno) throws Exception;
 	
-	// ëŒ“ê¸€ ì‘ì„±
+	// ´ñ±Û ÀÛ¼º
 	public void writeReply(ReplyVO vo) throws Exception;
 	
-	// ëŒ“ê¸€ ìˆ˜ì •
+	// ´ñ±Û ¼öÁ¤
 	public void updateReply(ReplyVO vo) throws Exception;
 	
-	// ëŒ“ê¸€ ì‚­ì œ
+	// ´ñ±Û »èÁ¦
 	public void deleteReply(ReplyVO vo) throws Exception;
 	
-	// ì„ íƒëœ ëŒ“ê¸€ ì¡°íšŒ
+	// ¼±ÅÃµÈ ´ñ±Û Á¶È¸
 	public ReplyVO selectReply(int rno) throws Exception;
 
 }

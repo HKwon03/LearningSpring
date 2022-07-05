@@ -16,55 +16,55 @@ public class BoardDAOImpl implements BoardDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
-	// ê²Œì‹œê¸€ ì‘ì„±
+	// °Ô½Ã±Û ÀÛ¼º
 	@Override
 	public void write(BoardVO boardVO) throws Exception {
 		sqlSession.insert("boardMapper.insert", boardVO);
 		
 	}
 	
-	// ê²Œì‹œë¬¼ ëª©ë¡ ì¡°íšŒ
+	// °Ô½Ã¹° ¸ñ·Ï Á¶È¸
 	@Override
 	public List<BoardVO> list(SearchCriteria scri) throws Exception {
 	
 		return sqlSession.selectList("boardMapper.listPage", scri);
 	}
 	
-	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
+	// °Ô½Ã¹° ÃÑ °¹¼ö
 	@Override
 	public int listCount(SearchCriteria scri) throws Exception {
 		
 		return sqlSession.selectOne("boardMapper.listCount", scri);
 	}
 	
-	// ê²Œì‹œë¬¼ ì¡°íšŒ
+	// °Ô½Ã¹° Á¶È¸
 	@Override
 	public BoardVO read(int bno) throws Exception {
 			
 		return sqlSession.selectOne("boardMapper.read", bno);
 	}
 	
-	// ê²Œì‹œë¬¼ ìˆ˜ì •
+	// °Ô½Ã¹° ¼öÁ¤
 	@Override
 	public void update(BoardVO boardVO) throws Exception {
 		
 		sqlSession.update("boardMapper.update", boardVO);
 	}
 
-	// ê²Œì‹œë¬¼ ì‚­ì œ
+	// °Ô½Ã¹° »èÁ¦
 	@Override
 	public void delete(int bno) throws Exception {
 		
 		sqlSession.delete("boardMapper.delete", bno);
 	}
 	
-	// ê²Œì‹œíŒ ì¡°íšŒìˆ˜
+	// °Ô½ÃÆÇ Á¶È¸¼ö
 	@Override
 	public void boardHit(int bno) throws Exception {
 		sqlSession.update("boardMapper.boardHit", bno);
 	}
 	
-	// ê²Œì‹œíŒ ë‹µë³€ì™„ë£Œ
+	// °Ô½ÃÆÇ ´äº¯¿Ï·á
 	@Override
 	public void boardAnswer(int bno) throws Exception {
 		sqlSession.update("boardMapper.boardAnswer", bno);
