@@ -32,14 +32,14 @@ public class BoardController {
 	@Inject
 	ReplyService replyService;
 	
-	// °Ô½ÃÆÇ ±Û ÀÛ¼º È­¸é
+	// ê²Œì‹œíŒ ê¸€ ì‘ì„± í™”ë©´
 	@RequestMapping(value = "/board/writeView", method = RequestMethod.GET)
 	public void writeView() throws Exception{
 		logger.info("writeView");
 		
 	}
 	
-	// °Ô½ÃÆÇ ±Û ÀÛ¼º
+	// ê²Œì‹œíŒ ê¸€ ì‘ì„±
 	@RequestMapping(value = "/board/write", method = RequestMethod.POST)
 	public String write(BoardVO boardVO) throws Exception{
 		logger.info("write");
@@ -49,7 +49,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	// °Ô½ÃÆÇ ¸ñ·Ï Á¶È¸
+	// ê²Œì‹œíŒ ëª©ë¡ ì¡°íšŒ
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 		logger.info("list");
@@ -66,7 +66,7 @@ public class BoardController {
 		
 	}
 	
-	// °Ô½ÃÆÇ Á¶È¸
+	// ê²Œì‹œíŒ ì¡°íšŒ
 	@RequestMapping(value = "/readView", method = RequestMethod.GET)
 	public String read(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		logger.info("read");
@@ -80,7 +80,7 @@ public class BoardController {
 		return "board/readView";
 	}
 	
-	// °Ô½ÃÆÇ ¼öÁ¤ºä
+	// ê²Œì‹œíŒ ìˆ˜ì •ë·°
 	@RequestMapping(value = "/updateView", method = RequestMethod.GET)
 	public String updateView(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		logger.info("updateView");
@@ -91,7 +91,7 @@ public class BoardController {
 		return "board/updateView";
 	}
 	
-	// °Ô½ÃÆÇ ¼öÁ¤
+	// ê²Œì‹œíŒ ìˆ˜ì •
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 		logger.info("update");
@@ -106,7 +106,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	// °Ô½ÃÆÇ »èÁ¦
+	// ê²Œì‹œíŒ ì‚­ì œ
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 		logger.info("delete");
@@ -121,7 +121,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	//´ñ±Û ÀÛ¼º
+	// ëŒ“ê¸€ ì‘ì„±
 	@RequestMapping(value="/replyWrite", method = RequestMethod.POST)
 	public String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
@@ -137,7 +137,7 @@ public class BoardController {
 		return "redirect:/board/readView";
 	}
 	
-	//´ñ±Û ¼öÁ¤ GET
+	// ëŒ“ê¸€ ìˆ˜ì • GET
 	@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
 	public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		logger.info("reply Write");
@@ -148,7 +148,7 @@ public class BoardController {
 		return "board/replyUpdateView";
 	}
 	
-	//´ñ±Û ¼öÁ¤ POST
+	// ëŒ“ê¸€ ìˆ˜ì • POST
 	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
 	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
@@ -164,7 +164,7 @@ public class BoardController {
 		return "redirect:/board/readView";
 	}
 	
-	//´ñ±Û »èÁ¦ GET
+	//ëŒ“ê¸€ ì‚­ì œ GET
 	@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
 	public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		logger.info("reply Write");
@@ -176,7 +176,7 @@ public class BoardController {
 		return "board/replyDeleteView";
 	}
 	
-	//´ñ±Û »èÁ¦
+	// ëŒ“ê¸€ ì‚­ì œ
 	@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
 	public String replyDelete(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");

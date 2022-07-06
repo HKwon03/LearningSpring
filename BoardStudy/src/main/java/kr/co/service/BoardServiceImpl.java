@@ -19,27 +19,27 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 	
-	// °Ô½Ã±Û ÀÛ¼º
+	// ê²Œì‹œê¸€ ì‘ì„±
 	@Override
 	public void write(BoardVO boardVO) throws Exception {
 		dao.write(boardVO);
 	}
 	
-	// °Ô½Ã¹° ¸ñ·Ï Á¶È¸
+	// ê²Œì‹œë¬¼ ëª©ë¡ ì¡°íšŒ
 	@Override
 	public List<BoardVO> list(SearchCriteria scri) throws Exception {
 
 		return dao.list(scri);
 	}
 	
-	// °Ô½Ã¹° ÃÑ °¹¼ö
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 	@Override
 	public int listCount(SearchCriteria scri) throws Exception {
 		
 		return dao.listCount(scri);
 	}
 	
-	// °Ô½Ã¹° Á¶È¸
+	// ê²Œì‹œë¬¼ ì¡°íšŒ
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public BoardVO read(int bno) throws Exception {
@@ -48,14 +48,14 @@ public class BoardServiceImpl implements BoardService {
 		return dao.read(bno);
 	}
 	
-	// °Ô½Ã¹° ¼öÁ¤
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
 	@Override
 	public void update(BoardVO boardVO) throws Exception {
 
 		dao.update(boardVO);
 	}
 	
-	// °Ô½Ã¹° »èÁ¦
+	// ê²Œì‹œë¬¼ ì‚­ì œ
 	@Override
 	public void delete(int bno) throws Exception {
 		

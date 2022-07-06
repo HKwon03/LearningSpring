@@ -98,6 +98,7 @@
 	</update>
 	
 	<!-- 게시판 답변완료 -->
+	<!-- 답변완료 및 답변대기 가능 -->
 	<update id="boardAnswer" parameterType="kr.co.vo.BoardVO">
 		UPDATE MP_BOARD A
 		SET
@@ -107,4 +108,5 @@
 			( SELECT RNO FROM MP_REPLY B WHERE A.BNO = B.BNO) 
 			THEN '답변완료' ELSE '답변대기' END)
    </update>
+
 </mapper>

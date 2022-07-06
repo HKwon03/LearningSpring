@@ -78,7 +78,7 @@ select name from v$database;
 
 -----------------------------------------------------
 
---답변완료만 가능
+
 
 UPDATE
     MP_BOARD A
@@ -93,9 +93,6 @@ WHERE EXISTS (
         A.BNO = B.BNO
     );
 --------------------------------------------------------
-
---답변완료 및 답변대기 가능
-
 update MP_BOARD A
 SET
     ANSWER = (
@@ -152,7 +149,7 @@ ADD CONSTRAINT fk_dp_id foreign KEY(dp_id) references dp_point (dp_id);
 
 ALTER TABLE my_tourroute
 ADD CONSTRAINT fk_arr_id foreign KEY(arr_id) references arr_point (arr_id);
-------------------------------------------------------------------------------
+
 ALTER TABLE my_tourroute
 ADD CONSTRAINT fk_t_id foreign KEY(t_id) references tours (t_id);
 
