@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="festivalMapper">
+	
+	  <select id="list" resultType="kr.co.vo.FestivalVO">
+		SELECT F_CODE
+			   , F_NAME
+			   , F_PLACE
+			   , F_STARTDATE
+			   , F_ENDDATE
+			   , F_TEL
+		  FROM FESTIVAL
+		  ORDER BY F_CODE DESC
+	</select>
+	
+	<select id="listPage" resultType="kr.co.vo.FestivalVO" parameterType="kr.co.vo.SearchCriteria">
+		SELECT F_CODE
+			   ,F_NAME
+			   , F_PLACE
+			   , F_STARTDATE
+			   , F_ENDDATE
+			   , F_TEL
+		 FROM ( 
+		        SELECT F_CODE
+		        	   , F_NAME
+					   , F_PLACE
+					   , F_STARTDATE
+					   , F_ENDDATE
+					   , F_TEL
+		               , ROW_NUMBER() OVER(ORDER BY F_CODE DESC) AS RNUM
+		         FROM FESTIVAL
+		         WHERE 1=1 
+		         	<include refid="search"></include>
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY F_CODE DESC
+	</select>
+	
+	<select id="listCount" parameterType="kr.co.vo.SearchCriteria" resultType="int">
+		SELECT COUNT(F_CODE)
+		   FROM FESTIVAL
+		   WHERE 1=1
+		<include refid="search"></include>	
+		   AND F_CODE > 0
+	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'f'.toString()">AND F_NAME LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 's'.toString()">AND F_STARTDATE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'e'.toString()">AND F_ENDDATE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'se'.toString()">AND (F_STARTDATE <= TO_DATE(#{KEYWORD}, YYYY-MM-DD)) AND (F_ENDDATE <= TO_DATE(#{KEYWORD}, YYYY-MM-DD))</IF>
+		</if>
+	</sql>
+
+</mapper>
