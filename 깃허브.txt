@@ -1,0 +1,300 @@
+깃 연습 아이디
+이		김		박
+사원		대리		과장
+LEE3empl지메일	kim3clr지메일	park3team지메일
+이사원#3		김대리#3		박과장#3
+teamempl2000	teamdaeri1999	teamleaderpark1995
+
+워킹 트리(Work Tree) : 로컬의 작업 폴더(c:\git\mybatis), [.git]을 제외한 나머지 부분
+로컬 저장소 (Local Repository) : git init 으로 생성되는 [.git] 폴더가 로컬 저장소, 스테이지의 데이터, 커밋한 데이터가 저장되는 곳
+원격 저장소 (Remote Repository) : GitHub 의 저장소
+git 저장소 : 워킹트리 + 로컬 저장소
+
+git add 파일명	<== 현재 파일을 스테이지 영역에 등록 : 스테이지에 등록된 파일만 커밋할 수 있다. 커밋을 해야 원격 저장소에 푸시할 수 있다.
+git add .		<== 현재 폴더의 모든 파일을 스테이지 영역에 등록함
+git reset 파일명	<== 스테이지 영역의 파일을 워킹 트리로 이동
+git status		<== 워킹트리의 파일, 스테이지 영역의 파일을 확인
+git status -s	<== 간략하게 출력
+git log		<== 커밋된 정보를 출력
+커밋을 하기 위해서는 Author 정보가 등록되어 있어야 된다.
+git config --global user.name "이름"
+git config --global user.email "메일주소"
+
+원격의 주소 확인
+git remote 
+git remote -v		<== 원격에 세팅된 레파지토리 주소를 확인
+git remote remove origin	<== origin의 값을 제거
+git remote add origin "원격레파지토리주소"
+git push origin master
+
+로컬의 프로젝트 파일을 원격 저장소(GitHub)에 업로드(원격 저장소에서 readme파일을 생성하지 않는다)
+git init
+git add .
+git commit -m "프로젝트 처음 커밋"
+git push origin master
+
+
+
+================================================================
+GitHub 에서 소규모 협업하기 
+================================================================
+1. [팀장] - 협업을 위한 원격레파지토리 생성, 기본 설정의 프로젝트를 [web.xml, application.xml, spring dispacherservlet, 라이브러리]
+2. [팀장] - 원격의 레파지토리를 로컬 레파짙리로 동기화
+  git clone "원격 레파지토리 주소"
+	- 1. 로컬 레파지토리 <<프로젝트 폴더>> : 기본 설정 구성
+	      - Web.xml
+	      - application.xml <== bean setting, datasource, mybatis sessiontemplate
+	      - pom.xml <== 개발에 필요한 라이브러리
+	      - JDK 버전, Tomcat 버전
+	- 2. Readme 파일에서 프로젝트의 완성해야할 기능을 적시
+  touch "환경설정완료.txt"
+3. [팀장] - 환경설정이 완료된 프로젝트를 GitHub에 push
+    git add .	<== 스테이징 영역에 모든 파일을 등록
+    git commit -m "1. 환경설정 완료[팀장_2022.07.01]"
+    git log 	<== 현재 접근한 브랜치의 커밋상태를 출력
+
+	<<중요>> : 추가적인 브랜치 생성
+    git branch	<== 현재 생성된 브랜치를 확인
+    git checkout -b dev	<== dev 브랜치를 생성후 해당 브랜치로 이동 : (브랜치 생성 + 브랜치 이동)    
+    	git checkout master	<== master 브랜치로 이동
+	git branch chb	<== chb 브랜치 생성
+	git branch -d chb	<== chb 브랜치 삭제
+	git branch -D chb	<== chb 브랜치 강제 삭제   <== 주의를 요함 : 
+    git push --all		<== 모든 브랜치를 한꺼번에 서버에 push <== 주의 : 처음 브랜치를 생성해서 올릴때 사용
+
+4. [팀장]
+	- GitHub 에서 Mail 알림 설정 : 사원들이 PR 요청을 했을 경우 등록된 메일 주소로 알림을 자동으로 보냄
+	- 사원들 계정에 초대장 보내기 : 팀원들에게 보냄. [팀원]은 초대장을 승인
+	- master, dev 브랜치 보호 : PR 요청을 받은후 승인을 통해서만 merge할 수 있도록 설정
+
+		팀장 : master, dev 브랜치를 승인없이 push할 수 있다.
+		대리, 사원 : master, dev 브랜치에 대해서 PR 요청을 보내야 하고 승인후 merge 할 수 있다.
+			<<PR : Pull Request>> 요청을 보낸다. [팀장] 승인후 dev 브랜치에 merge한다.
+
+5. [대리, 사원] : GitHub의 원격레파지토리를 로컬 레파지토리로 동기화(git clone)
+    git clone "원격레파지토리 주소"	<== master 브랜치만 다운됨
+    git branch			<== master만 다운된것 확인, dev 브랜치는 동기화 되지 않음
+    git branch -r 			<== 원격의 브랜치 확인
+    git checkout -b dev origin/dev	<== 원격의 dev 브랜치를 로컬 레파지토리와 동기화 시키고, dev 브랜치로 이동
+
+    git barnch chb			<== 작업할 브랜치 생성(chb)
+    git checkout chb			<== 브랜치 이동
+	git checkout -b chb		<== 브랜치 생성후 생성된 브랜치로 이동 << 작업을 할 브랜치 >>
+    << 각 팀원들의 작업을 시작(자신의 브랜치에서) : chb >>
+    touch 회원가입완료.txt		<== 회원가입페이지 모두 작성
+	<주의 : 반드시 master, dev 브랜치에서 작업하면 안됨, chb 브랜치에서 작업>
+    git branch
+	 master
+	 dev
+	*chb	<== 브랜치에서 반드시 작업 <<< 주의..주의..주의..>>>
+
+    git add .
+    git commit -m "2.회원가입 완료 [김대리_2022.07.01]"
+
+    git push origin chb
+
+6. [대리, 사원] : GitHub 페이지에서 PR(Pull Request) 요청
+
+======================================================================
+GitHub에 개발된 내용을 Merge 순서
+
+1. 새로운 브랜치를 생성해서 개발전에 master, dev 브랜치의 원격 브랜치를 local 브랜치의 master, dev 를 동기화
+   git checkout master	<== 원격의 브랜치를 동기화 전에 동기화할 브랜치로 이동후 동기화
+   git pull origin master	<== GitHub의 master 브랜치를 현재 Head가 있는 브랜치로 동기화
+
+   git checkout dev		<== dev 브랜치로 이동후 
+   git pull origin dev		<== 원격의 dev 브랜치의 내용을 local의 현재 Head가 있는 브랜치로 이동
+
+2. 로컬의 branch 생성후 GitHub로 전송
+   git branch 브랜치명
+   git checkout 브랜치명
+   git push origin 브랜치명
+
+3. 원격의 사용을 다한 브랜치 삭제
+   git push --delete origin 브랜치명
+
+4. 로컬의 브랜치 삭제
+   git branch -d 브랜치명
+   git branch -D 브랜치명	<== 강제삭제
+
+포인트 헤더 (.git > refs > heads > master) : 브랜치에서 commit 을 하게 되면 Head 가 변경이 됨.
+
+
+==============================================================
+	Working Directory   ==>	Stage Area(index, History)    ==> 	master
+	test1.txt		git add .		History	         git commit
+	test2.txt		git add.		History
+
+리셋(reset)
+      옵션 : soft    -- 커밋 로그만 삭제
+		<<커밋 로그를 잘못 남겨서, 커밋 로그만 삭제후 새 커밋 이름을 남길때>>
+	 mixed -- 커밋 로그 삭제, index(History 정보 삭제) stage 영역 삭제
+		<<Working 디렉토리의 파일을 수정후 새롭게 커밋할 때 사용>>
+		<<잘 사용하지 않는다. 파일을 수정후 새롭게 커밋 하면 됨>>
+
+	 hard   -- 커밋 로그 삭제, index 삭제(stage 영역 삭제), 파일도 삭제
+		<<해당 커밋의 기능이 마음에 들지 않아서 새롭게 모든것을 삭제후 새로운 기능을 추가할때>>
+		<주의 : 삭제후에는 복구할 방법이 없다. 주의!!!>
+
+   git reset --soft <이전의 hashcode 4자>		<== 커밋 로그를 변경
+   git reset --mixed <이전의 hashcode 4자>	<== 파일을 수정후 새롭게 커밋
+   git reset --hard <이전의 hashcode 4자>	<== 해당 커밋의 모든 내용 삭제
+
+   git reset --hard HEAD~		<== 현재 HEAD 바로 이전 커밋정보로 되돌릴 때
+   git reset --hard HEAD~2		<== 현재 HEAD의 2단계 이전 커밋정보로 되돌릴 때
+
+==============================================================
+merge : 커밋정보를 다른 브랜치의 커밋된 정보와 합칠 때 사용.
+   - Fast Forward Merge : 빠르게 머지할 수 있다.
+	master 브랜치에서 새로운 브랜치를 생성후 새로운 브랜치에서 기능을 작성후 master 브랜치로 merge
+	
+	git checkout master
+	git merge dev
+
+   - 3Way Merge : 두 브랜치 모두 수정사항이 발생 되었을 경우, VI 에디터로 들어감 (커밋 로그이름을 수정)
+
+	git checkout master
+	git merge dev		<== VI로 이동(로그이름을 수정, 저장후 종료)
+	git checkout dev
+	git merge master
+
+VI Editor
+  명령모드 : 키보드의 모든 키가 명령어로 작동되는 모드
+  입력모드 : 키보드의 키가 입력되는 모드
+  라인입력모드 : VI의 설정을 세팅하는 모드, 저장하고 VI 빠져 나오기
+
+	==> 명령모드에서 입력모드로 전환 : i
+	==> 입력모드에서 명령모드로 전환 : esc
+	==> 명령모드에서 라인입력모드로 전환 :   :wq    <== 저장하고 빠져나오기
+
+git log --all --oneline --graph
+
+==============================================================
+merge 충돌 해결 : - 하나의 파일을 여러명이 수정할 경우, merge할 때 충돌 발생이 될 수 있다.
+	          - 하나의 파일(기능)은 한명의 개발자가 관리하도록 정책이 필요하다.
+	-회원로그인 <- controller, dao, dto, view page
+
+==============================================================
+rebase : 커밋 로그를 깔금하게 정리함. 협업할 때 자신의 커밋 로그를 잘 정리해서 merge 함.
+	- 개발 당시에 생성한 불필요한 커밋 로그를 깔금하게 정리해서 dev 브랜치에 통합
+
+	개발당시에 커밋로그			원격의 GitHub 레파지토리에 올리기 위한 커밋로그
+	---------------------------------------------------------------------------
+	pick 1. 회원가입 DB 생성			1. 회원가입 완료
+	  s   2. 회원가입 Controller 생성
+	  s   3. 회원가입 DTO 생성
+	  s   4. 회원가입 DAO 생성
+	  s   5. 회원가입 View Page 생성
+	  s   6. 회원가입 완료
+
+
+	squash : 찌그러뜨리다.
+
+    git rebase -i HEAD~6	
+
+    git push -f origin chb		<== 강제로 push 한다.
+    git push --delete origin chb		<== 원격 브랜치 삭제
+
+<<원격의 GitHub 레파지토리에 Push할 때 주의사항>>
+1. 반드시 별도의 브랜치를 생성후 (chb) push 해야한다. <주의 : master, dev에서 개발하면 안된다.>
+2. 개발된 브랜치를 GitHub로 Push 한다.	<== 주의 : 지저분한 Commit 로그를 rebase 후 깔끔하게 해서 push한다.
+3. PR(Pull Request) 요청을 한다.
+4. 승인이 완료되면 merge 한다.
+5. 해당 브랜치(chb)를 삭제한다.
+6. local dev 브랜치를 원격의 dev 브랜치와 동기화 시킨다. <master, dev를 원격의 GitHub의 레파지토리와 동기화한다.> git pull origin master
+
+============================================================
+reflog : 모든 커밋된 정보를 저장하고 있는 로그	<== <<굉장히 중요한 정보>>
+     <<특정 커밋된 곳으로 되돌릴때 사용>>
+   git reflog
+   git reset --hard <되돌릴 commit hashcode>
+
+
+
+=============================================================
+1. 팀장 - 환경 세팅, 원격 레파지토리 생성
+    git init	<== 초기화
+
+    git remote add origin (원격레파지토리주소)	<== GitHub 주소를 등록
+    git remote -v 	<== 원격의 origin 변수에 GitHub 레파지토리 등록 확인
+
+    GitHub에 Local 레파지토리 파일을 업로드 하기 위해서는 commit 을 해야 한다.
+    git add .	<== 커밋전 스테이지 영역(index영역, History정보가 있음)에 등록
+    git commit -m "1. 환경설정 완료[팀장]-2022.07.06"
+
+2. 환경 세팅한 Local 레파지토리를 원격 GitHub 레파지토리에 전송(push)
+    <주의 : 서버로 push 전에 어느 브랜치에서 작업하고 있는지 확인 : git branch>
+    git push origin master
+
+3. dev 브랜치 생성, GitHub 레파지토리에 등록(push)
+    git checkout -b dev
+	git branch dev
+	git checkout dev
+    git push origin dev
+
+4. [팀장] - GitHub - 
+     - master, dev 브랜치 PR 요청을 받고 승인후 merge할 수 있도록 보호 설정,
+     - 알림 메일 설정
+     - 해당 프로젝트에 팀원들에게 초대장 발송
+     
+5. [대리, 사원, 팀원] - 초대장 승인
+
+6. [팀원] - GitHub의 레파지토리를 Local로 동기화 [clone    <== 제일 처음 한번만 사용, 이후는 pull ]
+    git clone <원격레파지토리 주소>	<== 처음 한번만 사용, pull, master 브랜치만 가져옴
+    git branch	<== Local 브랜치 확인
+    git branch -r 	<== 원격 브랜치 확인
+
+    git checkout -b dev origin/dev	<== 원격의 origin/dev 브랜치를 로컬의 dev 브랜치를 생성하고 동기화후 dev 브랜치로 이동
+
+7. [팀원] - 개발을 시작 <== 주의 : master, dev 에서 개발을 시작하면 안됨.(원격에서 보호되는 브랜치)
+    - 별도의 브랜치를 생성후 작업
+    git checkout -b chb
+
+8. [팀원] - 개발을 완료후 GitHub에 push, PR 요청, 승인을 받아서 merge, 자신의 브랜치 삭제
+    -- 주의 : 개발을 완료하고 서버로 push하기 전에 Local의 commit log를 깔금하게 정리해서 GitHub로 push
+
+    git push -f origin chb		<== 원격의 커밋정보를 무시하고 강제로 push
+    git push --delete origin sawon	<== 원격의 브랜치를 삭제후 새롭게 업로드
+
+    git rebase -i HEAD~3		<== 커밋 로그를 깔끔하게 정리하고 push
+
+9. [팀장] - dev 브랜치의 기능들이 취합이 되면 서비스할 master 브랜치로 merge
+
+10. [팀장] - 팀원들에게 master, dev 브랜치가 merge 되었다고 알려줘야함. [메일] - 동기화 하라고 알림
+
+
+=====================================================================
+최종 커밋 로그 변경 3가지
+
+git commit --amend -m "마지막 커밋 로그변경"	<== 첫 번째 방법
+git reset --soft <이전커밋의 hashcode>
+	git commit -m "수정할 커밋이름"
+git rebase -i HEAD~3
+	-> VI 진입 
+	-> i 입력모드 
+	-> r 변경할 커밋로그 앞에 pick 지우고 r 설정 
+	-> :wq   <== 명령모드
+	-> 로그이름을 변경
+	-> :wq
+
+======================================================================
+rebase를 사용해서 중간의 불필요한 기능 삭제하기(d)
+
+git rebase -i HEAD~5
+	-> VI 로 진입
+	-> i 입력 모드로 전환
+	-> d 커밋로그 앞 pick을 지우고 d 설정
+	-> esc 후 :wq
+
+
+
+
+
+
+
+
+
+
+
+
+

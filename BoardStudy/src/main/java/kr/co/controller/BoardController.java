@@ -137,7 +137,7 @@ public class BoardController {
 		return "redirect:/board/readView";
 	}
 	
-	//댓글 수정 GET
+	// 댓글 수정 GET
 	@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
 	public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
 		logger.info("reply Write");
@@ -148,7 +148,7 @@ public class BoardController {
 		return "board/replyUpdateView";
 	}
 	
-	//댓글 수정 POST
+	// 댓글 수정 POST
 	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
 	public String replyUpdate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		logger.info("reply Write");
