@@ -54,7 +54,7 @@
 					       <option value="se"<c:out value="${scri.searchType eq 's' ? 'selected' : ''}"/>>축제일</option>
 					    </select>
 					
-					    <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+					    <input type="date" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 					
 					    <button id="searchBtn" type="button">검색</button>
 					    <script>

@@ -51,7 +51,7 @@
 			<if test="searchType == 'f'.toString()">AND F_NAME LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 's'.toString()">AND F_STARTDATE LIKE '%' || #{keyword} || '%'</if>
 			<if test="searchType == 'e'.toString()">AND F_ENDDATE LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'se'.toString()">AND BETWEEN (TO_DATE(F_STARTDATE, YYYY-MM-DD) AND (TO_DATE(F_STARTDATE, YYYY-MM-DD)))</IF>
+			<if test="searchType == 'se'.toString()">AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
 		</if>
 	</sql>
 
