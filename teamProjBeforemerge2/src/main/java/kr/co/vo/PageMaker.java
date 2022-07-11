@@ -6,6 +6,9 @@ import java.net.URLEncoder;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import lombok.Data;
+
+@Data
 public class PageMaker {
 
 	private int totalCount;
@@ -16,41 +19,11 @@ public class PageMaker {
 	private int displayPageNum = 10;
 	private Criteria cri;
 	
-	public void setCri(Criteria cri) {
-		this.cri = cri;
-	}
+	
 	
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 		calcData();
-	}
-	
-	public int getTotalCount() {
-		return totalCount;
-	}
-	
-	public int getStartPage() {
-		return startPage;
-	}
-	
-	public int getEndPage() {
-		return endPage;
-	}
-	
-	public boolean isPrev() {
-		return prev;
-	}
-	
-	public boolean isNext() {
-		return next;
-	}
-	
-	public int getDisplayPageNum() {
-		return displayPageNum;
-	}
-	
-	public Criteria getCri() {
-		return cri;
 	}
 	 
 	private void calcData() {

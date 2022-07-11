@@ -15,6 +15,20 @@
 		  ORDER BY F_CODE DESC
 	</select>
 	
+	<select id="read" parameterType="int" resultType="kr.co.vo.FestivalVO">
+		SELECT	F_STARTDATE
+			  , F_ENDDATE
+			  , F_MAINC
+			  , F_TEL
+			  , F_HOME
+			  , F_CONTENT
+			  , F_NAME
+			  , F_NY
+			  , F_NX
+		 FROM FESTIVAL
+		 WHERE F_CODE = #{F_CODE}
+	</select>
+	
 	<select id="listPage" resultType="kr.co.vo.FestivalVO" parameterType="kr.co.vo.SearchCriteria">
 		SELECT F_CODE
 			   ,F_NAME
@@ -48,10 +62,24 @@
 	
 	<sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == 'f'.toString()">AND F_NAME LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 's'.toString()">AND F_STARTDATE LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'e'.toString()">AND F_ENDDATE LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'se'.toString()">AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'a'.toString()">AND F_ADMIN LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'se1'.toString()">AND (F_ADMIN LIKE '%' || '서울특별시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se2'.toString()">AND (F_ADMIN LIKE '%' || '경기도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se3'.toString()">AND (F_ADMIN LIKE '%' || '인천광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se4'.toString()">AND (F_ADMIN LIKE '%' || '강원도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se5'.toString()">AND (F_ADMIN LIKE '%' || '충청남도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se6'.toString()">AND (F_ADMIN LIKE '%' || '충청북도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se7'.toString()">AND (F_ADMIN LIKE '%' || '세종특별자치시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se8'.toString()">AND (F_ADMIN LIKE '%' || '대전광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se9'.toString()">AND (F_ADMIN LIKE '%' || '경상남도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se10'.toString()">AND (F_ADMIN LIKE '%' || '경상북도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se11'.toString()">AND (F_ADMIN LIKE '%' || '대구광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se12'.toString()">AND (F_ADMIN LIKE '%' || '울산광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se13'.toString()">AND (F_ADMIN LIKE '%' || '부산광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se14'.toString()">AND (F_ADMIN LIKE '%' || '전라남도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se15'.toString()">AND (F_ADMIN LIKE '%' || '전라북도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se16'.toString()">AND (F_ADMIN LIKE '%' || '광주광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'se17'.toString()">AND (F_ADMIN LIKE '%' || '제주특별자치도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
 		</if>
 	</sql>
 

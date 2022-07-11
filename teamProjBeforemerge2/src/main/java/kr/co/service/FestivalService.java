@@ -9,7 +9,10 @@ public interface FestivalService {
 	// 축제 목록 조회
 	public List<FestivalVO> list(SearchCriteria scri) throws Exception;
 
-	//축제 총 갯수
+	// 축제 총 갯수
 	public int listCount(SearchCriteria scri) throws Exception;
+	
+	// 축제 조회
+	public FestivalVO read(int f_code) throws Exception;
 		
 }

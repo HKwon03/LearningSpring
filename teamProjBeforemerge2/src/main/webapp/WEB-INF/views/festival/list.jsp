@@ -48,10 +48,23 @@
 					<div class="search">
 					    <select name="searchType">
 					      <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
-					      <option value="f"<c:out value="${scri.searchType eq 'f' ? 'selected' : ''}"/>>축제 이름</option>
-					      <option value="s"<c:out value="${scri.searchType eq 's' ? 'selected' : ''}"/>>축제 시작일</option>
-					      <option value="e"<c:out value="${scri.searchType eq 's' ? 'selected' : ''}"/>>축제 종료일</option>
-					       <option value="se"<c:out value="${scri.searchType eq 's' ? 'selected' : ''}"/>>축제일</option>
+					      <option value="se1"<c:out value="${scri.searchType eq 'se1' ? 'selected' : ''}"/>>서울특별시 축제일 검색</option>
+					      <option value="se2"<c:out value="${scri.searchType eq 'se2' ? 'selected' : ''}"/>>경기도 축제일 검색</option>
+					      <option value="se3"<c:out value="${scri.searchType eq 'se3' ? 'selected' : ''}"/>>인천광역시 축제일 검색</option>
+					      <option value="se4"<c:out value="${scri.searchType eq 'se4' ? 'selected' : ''}"/>>강원도 축제일 검색</option>
+					      <option value="se5"<c:out value="${scri.searchType eq 'se5' ? 'selected' : ''}"/>>충청남도 축제일 검색</option>
+					      <option value="se6"<c:out value="${scri.searchType eq 'se6' ? 'selected' : ''}"/>>충청북도 축제일 검색</option>
+					      <option value="se7"<c:out value="${scri.searchType eq 'se7' ? 'selected' : ''}"/>>세종특별자치시 축제일 검색</option>
+					      <option value="se8"<c:out value="${scri.searchType eq 'se8' ? 'selected' : ''}"/>>대전광역시 축제일 검색</option>
+					      <option value="se9"<c:out value="${scri.searchType eq 'se9' ? 'selected' : ''}"/>>경상남도 축제일 검색</option>
+					      <option value="se10"<c:out value="${scri.searchType eq 'se10' ? 'selected' : ''}"/>>경상북도 축제일 검색</option>
+					      <option value="se11"<c:out value="${scri.searchType eq 'se11' ? 'selected' : ''}"/>>대구광역시 축제일 검색</option>
+					      <option value="se12"<c:out value="${scri.searchType eq 'se12' ? 'selected' : ''}"/>>울산광역시 축제일 검색</option>
+					      <option value="se13"<c:out value="${scri.searchType eq 'se13' ? 'selected' : ''}"/>>부산광역시 축제일 검색</option>
+					      <option value="se14"<c:out value="${scri.searchType eq 'se14' ? 'selected' : ''}"/>>전라남도 축제일 검색</option>
+					      <option value="se15"<c:out value="${scri.searchType eq 'se15' ? 'selected' : ''}"/>>전라북도 축제일 검색</option>
+					      <option value="se16"<c:out value="${scri.searchType eq 'se16' ? 'selected' : ''}"/>>광주광역시 축제일 검색</option>
+					      <option value="se17"<c:out value="${scri.searchType eq 'se17' ? 'selected' : ''}"/>>제주특별자치도 축제일 검색</option>
 					    </select>
 					
 					    <input type="date" name="keyword" id="keywordInput" value="${scri.keyword}"/>

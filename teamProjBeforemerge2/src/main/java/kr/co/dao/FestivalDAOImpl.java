@@ -31,4 +31,11 @@ public class FestivalDAOImpl implements FestivalDAO{
 		return sqlSession.selectOne("festivalMapper.listCount", scri);
 	}
 	
+	// 축제 조회
+	@Override
+	public FestivalVO read(int f_code) throws Exception {
+			
+		return sqlSession.selectOne("festivalMapper.read", f_code);
+	}
+	
 }

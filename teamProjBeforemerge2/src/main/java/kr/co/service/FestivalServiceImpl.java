@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.dao.FestivalDAO;
 import kr.co.vo.FestivalVO;
@@ -28,6 +30,13 @@ public class FestivalServiceImpl implements FestivalService{
 	public int listCount(SearchCriteria scri) throws Exception {
 		
 		return dao.listCount(scri);
+	}
+	
+	// 축제 조회
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@Override
+	public FestivalVO read(int f_code) throws Exception {
+		return dao.read(f_code);
 	}
 	
 
