@@ -20,7 +20,7 @@ public class FestivalVO {
 	private String f_loadaddress;
 	private String f_admin;
 	private String f_gnumaddress;
-	private int f_ny;
-	private int f_nx;
+	private double f_ny;
+	private double f_nx;
 	
 }
