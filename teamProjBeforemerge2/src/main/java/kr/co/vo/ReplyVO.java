@@ -2,6 +2,8 @@ package kr.co.vo;
 
 import java.util.Date;
 
+import lombok.Data;
+
 public class ReplyVO {
 
 	private int bno;

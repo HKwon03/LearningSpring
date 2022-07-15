@@ -22,22 +22,37 @@ public class FestivalController {
 	private static final Logger logger = LoggerFactory.getLogger(FestivalController.class);
 	
 	@Inject
-	FestivalService service;
+	FestivalService fservice;
 	
 	// 축제 목록 조회
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
-		logger.info("list");
+	@RequestMapping(value = "/listf", method = RequestMethod.GET)
+	public String listFestival(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
+		logger.info("listFestival");
 		
-		model.addAttribute("list", service.list(scri));
+		model.addAttribute("list", fservice.listFestival(scri));
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(service.listCount(scri));
+		pageMaker.setTotalCount(fservice.listFCount(scri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
-		return "festival/list";
+		return "festival/listf";
+		
+	}
+	
+	@RequestMapping(value = "/listfByAdmin", method = RequestMethod.GET)
+	public String listByAdmin (Model model, FestivalVO vo, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		
+		model.addAttribute("list",fservice.listByAdmin(scri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(fservice.listByCount(scri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "festival/listfByAdmin";
 		
 	}
 	
@@ -46,7 +61,7 @@ public class FestivalController {
 	public String read(FestivalVO festivalVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		logger.info("read");
 		
-		model.addAttribute("read", service.read(festivalVO.getF_code()));
+		model.addAttribute("read", fservice.read(festivalVO.getF_code()));
 		model.addAttribute("scri", scri);
 		
 		return "festival/readView";

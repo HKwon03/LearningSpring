@@ -14,7 +14,7 @@
 			// 목록
 			$(".list_btn").on("click", function(){
 			
-				location.href = "/festival/list?page=${scri.page}"
+				location.href = "/festival/listf?page=${scri.page}"
 							  +"&perPageNum=${scri.perPageNum}"
 							  +"&searchType=${scri.searchType}&keyword=${scri.keyword}";
 			})

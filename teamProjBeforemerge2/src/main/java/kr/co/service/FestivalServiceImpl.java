@@ -20,16 +20,28 @@ public class FestivalServiceImpl implements FestivalService{
 	
 	// 축제 목록 조회
 	@Override
-	public List<FestivalVO> list(SearchCriteria scri) throws Exception {
+	public List<FestivalVO> listFestival(SearchCriteria scri) throws Exception {
 		
-		return dao.list(scri);
+		return dao.listFestival(scri);
 	}
 	
 	// 축제 총 갯수
 	@Override
-	public int listCount(SearchCriteria scri) throws Exception {
+	public int listFCount(SearchCriteria scri) throws Exception {
 		
-		return dao.listCount(scri);
+		return dao.listFCount(scri);
+	}
+	
+	//list by admin
+	@Override
+	public List<FestivalVO> listByAdmin(SearchCriteria scri) throws Exception {
+		return dao.listByAdmin(scri);
+	}
+
+	//축제 By admin 개수
+	@Override
+	public int listByCount(SearchCriteria scri) throws Exception {
+		return dao.listByCount(scri);
 	}
 	
 	// 축제 조회

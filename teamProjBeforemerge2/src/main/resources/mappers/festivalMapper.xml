@@ -15,6 +15,7 @@
 		  ORDER BY F_CODE DESC
 	</select>
 	
+	<!-- 축제 조회 -->
 	<select id="read" parameterType="int" resultType="kr.co.vo.FestivalVO">
 		SELECT	F_STARTDATE
 			  , F_ENDDATE
@@ -29,13 +30,17 @@
 		 WHERE F_CODE = #{F_CODE}
 	</select>
 	
-	<select id="listPage" resultType="kr.co.vo.FestivalVO" parameterType="kr.co.vo.SearchCriteria">
+	<!-- 축제 목록 -->
+	<select id="listfestival" resultType="kr.co.vo.FestivalVO" parameterType="kr.co.vo.SearchCriteria">
 		SELECT F_CODE
-			   ,F_NAME
+			   , F_NAME
 			   , F_PLACE
 			   , F_STARTDATE
 			   , F_ENDDATE
 			   , F_TEL
+			   , F_ADMIN
+			   , F_NY
+			   , F_NX
 		 FROM ( 
 		        SELECT F_CODE
 		        	   , F_NAME
@@ -43,44 +48,76 @@
 					   , F_STARTDATE
 					   , F_ENDDATE
 					   , F_TEL
-		               , ROW_NUMBER() OVER(ORDER BY F_CODE DESC) AS RNUM
+					   , F_ADMIN
+					   , F_NY
+					   , F_NX
+		               , ROW_NUMBER() OVER(ORDER BY F_STARTDATE DESC) AS RNUM
 		         FROM FESTIVAL
 		         WHERE 1=1 
-		         	<include refid="search"></include>
-		                       ) MP
+		         	<include refid="fsearch"></include>
+		                       ) FE
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-		ORDER BY F_CODE DESC
+		ORDER BY F_STARTDATE DESC
 	</select>
 	
-	<select id="listCount" parameterType="kr.co.vo.SearchCriteria" resultType="int">
+	<select id="flistCount" parameterType="kr.co.vo.SearchCriteria" resultType="int">
 		SELECT COUNT(F_CODE)
 		   FROM FESTIVAL
 		   WHERE 1=1
-		<include refid="search"></include>	
 		   AND F_CODE > 0
+		<include refid="fsearch"></include>	
 	</select>
 	
-	<sql id="search">
+	<sql id="fsearch">
 		<if test="searchType != null">
-			<if test="searchType == 'a'.toString()">AND F_ADMIN LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'se1'.toString()">AND (F_ADMIN LIKE '%' || '서울특별시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se2'.toString()">AND (F_ADMIN LIKE '%' || '경기도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se3'.toString()">AND (F_ADMIN LIKE '%' || '인천광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se4'.toString()">AND (F_ADMIN LIKE '%' || '강원도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se5'.toString()">AND (F_ADMIN LIKE '%' || '충청남도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se6'.toString()">AND (F_ADMIN LIKE '%' || '충청북도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se7'.toString()">AND (F_ADMIN LIKE '%' || '세종특별자치시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se8'.toString()">AND (F_ADMIN LIKE '%' || '대전광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se9'.toString()">AND (F_ADMIN LIKE '%' || '경상남도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se10'.toString()">AND (F_ADMIN LIKE '%' || '경상북도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se11'.toString()">AND (F_ADMIN LIKE '%' || '대구광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se12'.toString()">AND (F_ADMIN LIKE '%' || '울산광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se13'.toString()">AND (F_ADMIN LIKE '%' || '부산광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se14'.toString()">AND (F_ADMIN LIKE '%' || '전라남도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se15'.toString()">AND (F_ADMIN LIKE '%' || '전라북도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se16'.toString()">AND (F_ADMIN LIKE '%' || '광주광역시' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
-			<if test="searchType == 'se17'.toString()">AND (F_ADMIN LIKE '%' || '제주특별자치도' || '%') AND (TO_DATE(#{keyword}, 'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE, 'YYYY-MM-DD') AND TO_DATE(F_ENDDATE, 'YYYY-MM-DD'))</if>
+			<if test="searchType == 'admin'.toString()">AND F_ADMIN LIKE '%' || #{keyword} || '%' ORDER BY F_STARTDATE DESC</if>
+			<if test="searchType == 'name'.toString()">AND F_NAME LIKE '%' || #{keyword} || '%' ORDER BY F_STARTDATE DESC</if>
+		<!-- <if test="searchType == 'sdate'.toString()"><![CDATA[ AND '${keyword}' < F_STARTDATE ]]></if>  -->	
+			<if test="searchType == 'sdate'.toString()"> AND (TO_DATE(#{keyword},'YYYY-MM-DD') BETWEEN TO_DATE(F_STARTDATE,'YYYY-MM-DD') AND TO_DATE(F_ENDDATE,'YYYY-MM-DD')) ORDER BY F_STARTDATE DESC</if>
 		</if>
 	</sql>
+	
+	
+	<!-- 지도 클릭하면 각 도에 맞는 목록만 나옴 -->
+   <select id = "selectByAdmin" resultType="kr.co.vo.FestivalVO" parameterType="kr.co.vo.SearchCriteria">
+
+	  		SELECT  F_CODE, 
+		  			   F_NAME, 
+		  			   F_PLACE, 
+		  			   F_STARTDATE, 
+		  			   F_ENDDATE, 
+		  			   F_TEL, 
+		  			   F_ADMIN,
+		  			   F_NY,
+		  			   F_NX
+		  	FROM (
+	  			SELECT F_CODE, 
+		  			   F_NAME, 
+		  			   F_PLACE, 
+		  			   F_STARTDATE, 
+		  			   F_ENDDATE, 
+		  			   F_TEL, 
+		  			   F_ADMIN,
+		  			   F_NY,
+		  			   F_NX,
+		  			   ROW_NUMBER() OVER(ORDER BY F_STARTDATE) AS RNUM
+	  		FROM FESTIVAL
+	  		WHERE 1 = 1
+	  		AND F_ADMIN = #{f_admin}
+	  		<include refid="fsearch"></include>
+	  		) FE
+	  		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+	  		
+	  		ORDER BY F_STARTDATE DESC   
+  	</select>   
+  	
+  	<select id="flistCountByAdmin" parameterType="kr.co.vo.SearchCriteria" resultType="int">
+		SELECT COUNT(F_CODE)
+		   FROM FESTIVAL
+		   WHERE 1=1
+		   AND F_CODE > 0
+		   AND F_ADMIN = #{f_admin}
+		<include refid="fsearch"></include>	
+	</select>
 
 </mapper>
