@@ -29,7 +29,7 @@
 			      <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
 			      <option value="admin"<c:out value="${scri.searchType eq 'admin' ? 'selected' : ''}"/>>지역</option>
 			      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>축제 이름</option>
-			      <option value="sdate" <c:out value="${scri.searchType eq 'sdate' ? 'selected' : ''}"/>>시작일</option>
+			      <option value="sdate" <c:out value="${scri.searchType eq 'sdate' ? 'selected' : ''}"/>>축제일</option>
 			    </select>
 			    
 	    		<input type="text" class = "searchBox" name="keyword" id="keywordInput" value="${scri.keyword}"/>
