@@ -246,3 +246,6 @@ http://www.tcpschool.com/jquery/jq_event_method
 
 7월19일
 RPA
+
+7월21일
+Python
