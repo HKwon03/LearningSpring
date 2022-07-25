@@ -249,3 +249,9 @@ RPA
 
 7월21일
 Python
+
+7월22일
+python
+
+7월25일
+python
